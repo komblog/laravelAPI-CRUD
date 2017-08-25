@@ -10,13 +10,13 @@
 <h2>Screenshot</h2>
 
 <h3>Home</h3>
-<img src="http://imgur.com/GQKxZDe">
+![Alt text](http://imgur.com/GQKxZDe)
 
 <h3>Add</h3>
-<img src="http://imgur.com/tIvgunj">
+![Alt text](http://imgur.com/tIvgunj)
 
 <h3>Edit</h3>
-<img src="http://imgur.com/ysMtQue">
+![Alt text](http://imgur.com/ysMtQue)
 
 <h3>Delete</h3>
-<img src="http://imgur.com/JIhkl7L">
+![Alt text](http://imgur.com/JIhkl7L)
