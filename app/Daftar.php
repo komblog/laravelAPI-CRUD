@@ -9,6 +9,7 @@ class Daftar extends Eloquent
     protected $connection = 'mongodb';
     protected $collection = 'lists';
 
-    protected $guarded = [];
-    public $timestamps = false;
+    protected $fillable = [
+    	'name', 'address', 'email', 'contact',
+    ];
 }
