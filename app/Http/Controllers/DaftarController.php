@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class DaftarController extends Controller
 {   
-    public function manageItemAjax()
+    public function manageItem()
     {
         return view('web.home');
     }
