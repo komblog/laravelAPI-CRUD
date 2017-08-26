@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 
 class DaftarController extends Controller
-{
-
+{   
+    public function manageItemAjax()
+    {
+        return view('web.home');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +21,7 @@ class DaftarController extends Controller
      */
     public function index()
     {
-        $lists = Daftar::latest()->get();
+        $lists = Daftar::latest()->paginate(5);
         
         return response()->json($lists, 200);
     }
