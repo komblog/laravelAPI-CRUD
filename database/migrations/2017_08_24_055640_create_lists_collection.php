@@ -16,11 +16,12 @@ class CreateListsCollection extends Migration
      */
     public function up()
     {
-        Schema::connection($this->connection)->table('lists', function (Blueprint $collection) {
+        Schema::connection($this->connection)->collection('lists', function (Blueprint $collection) {
             $collection->index('name');
             $collection->index('address');
             $collection->index('email');
-            $collection->index('contact');            
+            $collection->index('contact');         
+            $collection->timestamps();   
         });
     }
 
