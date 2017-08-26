@@ -15,4 +15,4 @@ Route::get('/', function () {
 });
 //Route::get('/lists', 'webListController@index');
 
-Route::get('lists-item', 'DaftarController@manageItemAjax');
+Route::get('lists-item', 'DaftarController@manageItem');
