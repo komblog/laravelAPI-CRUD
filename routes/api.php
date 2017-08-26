@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('lists', 'DaftarController@index'); //index
-//Route::get('lists/{id}', 'DaftarController@show'); //show
+Route::get('lists/{id}', 'DaftarController@show'); //show
 Route::post('lists', 'DaftarController@store'); //store
 Route::put('lists/{id}', 'DaftarController@update'); //update
 Route::delete('lists/{id}', 'DaftarController@destroy'); //delete
