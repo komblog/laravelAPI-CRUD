@@ -19,24 +19,11 @@
 					    	</tr>
 					  	</thead>
 					  	<tbody class="items">
-								{{ csrf_field() }}
-					  		@foreach($lists as $list)
-							    <tr class="item{{$list['_id']}}">
-									<td>{{$list['name']}}</td>
-							      	<td>{{$list['address']}}</td>
-							      	<td>{{$list['email']}}</td>
-							      	<td>{{$list['contact']}}</td>
-							      	<td><button data-placement="top" data-toggle="tooltip" title="Edit" class="edit-modal btn btn-primary btn-xs" data-id="{{$list['_id']}}" data-name="{{$list['name']}}" data-address="{{$list['address']}}" data-email="{{$list['email']}}" data-contact="{{$list['contact']}}"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
-			    					<td><button data-placement="top" data-toggle="tooltip" title="Delete" class="delete-modal btn btn-danger btn-xs" data-id="{{$list['_id']}}" data-name="{{$list['name']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
-							    </tr>
-					   		@endforeach
 					  	</tbody>
 					</table>
     			</div>
     		</div>
-    		<nav aria-label="Page navigation example" class="pull-right">
-  				{!! $lists->links() !!}
-  			</nav>
+    		<nav id="pagination" aria-label="Page navigation example" class="pull-right"></nav>
   		</div>
   		<div id="myModal" class="modal fade" role="dialog">
 	  		<div class="modal-dialog">
