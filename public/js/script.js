@@ -1,6 +1,78 @@
-
 const urlAPI = "http://localhost:8000/api/lists";
+
+var page = 1;
+var current_page = 1;
+var total_page = 0;
+var is_ajax_fire = 0;
+
+manageData();
+
+/* manage data list */
+function manageData() {
+    $.ajax({
+        dataType: 'json',
+        url: urlAPI,
+        data: {page:page}
+    }).done(function(data){
+
+        total_page = data.last_page;
+        current_page = data.current_page;
+
+        $('#pagination').twbsPagination({
+            totalPages: total_page,
+            visiblePages: current_page,
+            onPageClick: function (event, pageL) {
+                page = pageL;
+                if(is_ajax_fire != 0){
+                  getPageData();
+                }
+            }
+        });
+
+        manageRow(data.data);
+        is_ajax_fire = 1;
+    });
+}
+
+$.ajaxSetup({
+    headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+});
+
+/* Get Page Data*/
+function getPageData() {
+    $.ajax({
+        dataType: 'json',
+        url: urlAPI,
+        data: {page:page}
+    }).done(function(data){
+        manageRow(data.data);
+    });
+}
+
+/* Add new Item table row */
+function manageRow(data) {
+    let rows = '';
+    $.each( data, function( key, value ) {
+        rows = rows + '<tr class="item'+value._id+'">';
+        rows = rows + '<td>'+value.name+'</td>';
+        rows = rows + '<td>'+value.address+'</td>';
+        rows = rows + '<td>'+value.email+'</td>';
+        rows = rows + '<td>'+value.contact+'</td>';
+        rows = rows + '<td><button data-placement="top" data-toggle="tooltip" title="Edit" class="edit-modal btn btn-primary btn-xs"\n\
+                       data-id="'+value._id+'" data-name="'+value.name+'" data-address="'+value.address+'"\n\
+                       data-email="'+value.email+'" data-contact="'+value.contact+'"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+        rows = rows + '<td><button data-placement="top" data-toggle="tooltip" title="Delete" class="delete-modal btn btn-danger btn-xs"\n\
+                       data-id="'+value._id+'" data-name="'+value.name+'"><i class="fa fa-trash-o" aria-hidden="true"></i></button>'    
+        rows = rows + '</tr>';
+    });
+
+    $("tbody").html(rows);
+}
+
 $(document).ready( function() {
+    //show modal when edit button clicked
     $(document).on('click', '.edit-modal', function(e) {
         e.preventDefault();
         $('#footer_action_button').text("Update");
@@ -19,6 +91,7 @@ $(document).ready( function() {
         $('#fcontact').val($(this).data('contact'));
         $('#myModal').modal('show');
     });
+    //show modal when delete button clicked
     $(document).on('click', '.delete-modal', function(e) {
         e.preventDefault();
         $('#footer_action_button').text(" Delete");
@@ -34,6 +107,7 @@ $(document).ready( function() {
         $('.dname').html($(this).data('name'));
         $('#myModal').modal('show');
     });
+    //show modal when add button clicked
     $(document).on('click', '.add-modal', function(e) {
         e.preventDefault();
         $('#footer_action_button').text("Add");
@@ -49,6 +123,7 @@ $(document).ready( function() {
         $('#myModal').modal('show');
         
     });
+    //save data when button add clicked
     $('.modal-footer').on('click', '.add', function(e) {
         e.preventDefault();
         const formData = {
@@ -78,6 +153,7 @@ $(document).ready( function() {
             }
         });
     });
+    //edit data when update button clicked
     $('.modal-footer').on('click', '.edit', function(e) {
         e.preventDefault();
         const _id = $("#fid").val();
@@ -111,6 +187,7 @@ $(document).ready( function() {
             }
         });
     });
+    //delete data when delete button clicked
     $('.modal-footer').on('click', '.delete', function(e) {
         e.preventDefault();
         const _id = $('.did').text();        
