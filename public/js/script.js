@@ -1,9 +1,9 @@
 const urlAPI = "http://localhost:8000/api/lists";
 
-var page = 1;
-var current_page = 1;
-var total_page = 0;
-var is_ajax_fire = 0;
+let page = 1;
+let current_page = 1;
+let total_page = 0;
+let is_ajax_fire = 0;
 
 manageData();
 
