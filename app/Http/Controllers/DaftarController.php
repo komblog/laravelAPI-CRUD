@@ -34,13 +34,6 @@ class DaftarController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'address' => 'required',
-            'email' => 'required',
-            'contact' => 'required'
-        ]);
-
         $list = new Daftar;
         $list->name =  $request->input('name');
         $list->address =  $request->input('address');
@@ -72,14 +65,7 @@ class DaftarController extends Controller
     
 
     public function update(Request $request, $id)
-    {
-        $this->validate($request, [
-            'name' => 'required',
-            'address' => 'required',
-            'email' => 'required',
-            'contact' => 'required'
-        ]);
-        
+    {        
         $update = DB::connection('mongodb')->collection('lists')->where('_id', $id)->update([
             'name' => $request->input('name'),
             'address' => $request->input('address'),
