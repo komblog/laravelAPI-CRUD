@@ -13,5 +13,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//Route::get('/lists', 'webListController@index');
 
-Route::get('/lists', 'webListController@index');
+Route::get('lists-item', 'DaftarController@manageItemAjax');

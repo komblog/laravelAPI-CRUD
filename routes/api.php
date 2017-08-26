@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::get('lists', 'DaftarController@index'); //index
 Route::get('lists/{id}', 'DaftarController@show'); //show
 Route::post('lists', 'DaftarController@store'); //store
