@@ -8,8 +8,8 @@
 	<li> jQuery </li>
 </ul>
 
-<h2>Note :</h2>
+<h2>:notebook: Note :</h2>
 
 > API testing using POSTMAN
 
-> Screenshot for API test and data table look at Issues 
+> Screenshot for API test and data table look at [Issues here](https://github.com/komblog/laravelAPI-CRUD/issues) 
